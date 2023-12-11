@@ -20,11 +20,17 @@ MODULE_LICENSE("Dual BSD/GPL");
 
 
 
-int myIntCheck = 3;
+static int myIntCheck = 1;
+
+
+
+module_param(myIntCheck, int, 0644);
 
 MODULE_PARM_DESC(myIntCheck, "uint");
 
 MODULE_INFO(myIntCheck, "How many to print hullo");
+
+
 
 
 
@@ -66,7 +72,7 @@ static void printMyData(void)
 
     	list_for_each_entry_safe(ptr, next, &myData, list) {
 
-    		printk(KERN_INFO "Time: %ddl", ptr->myTime);
+    		printk(KERN_INFO "Time: %lld", ktime_to_ns(ptr->myTime));
 
         // delete structs and return memory
 
