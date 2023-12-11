@@ -74,7 +74,6 @@ static void printMyData(void)
 
     		printk(KERN_INFO "Time: %lld", ktime_to_ns(ptr->myTime));
 
-        // delete structs and return memory
 
         list_del(&ptr->list);
 
